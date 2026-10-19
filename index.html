@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINZO DENIM — Everyday Denim, Refined</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration for Atelier Aesthetic -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        atelier: {
+                            bg: '#FBFBF9',        /* Warm Ivory / Off-White */
+                            card: '#FFFFFF',      /* Pure Crisp White */
+                            border: '#E8E8E3',    /* Subtle Warm Gray Border */
+                            borderDark: '#D4D4CE',
+                            black: '#0F0F0F',     /* Obsidian Black */
+                            muted: '#737370',     /* Muted Charcoal */
+                            gold: '#B89766',      /* Subtle Brushed Gold */
+                            goldLight: '#F7F3EC'
+                        }
+                    },
+                    fontFamily: {
+                        cormorant: ['"Cormorant Garamond"', 'serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FBFBF9;
+            color: #0F0F0F;
+            overflow-x: hidden;
+            letter-spacing: -0.01em;
+        }
+
+        .font-serif-atelier {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .font-mono-atelier {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Minimal Luxury Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FBFBF9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4D4CE;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0F0F0F;
+        }
+
+        /* Glassmorphism & Soft Lighting Effects */
+        .glass-atelier {
+            background: rgba(251, 251, 249, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(232, 232, 227, 0.8);
+        }
+
+        /* Image Zoom Animation */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Subtle Fade In Class */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* KINZO refresh: refined editorial styling with better mobile spacing */
+        html { scroll-padding-top: 90px; }
+        body { -webkit-font-smoothing: antialiased; }
+        .glass-atelier { box-shadow: 0 8px 30px rgba(20,20,18,.035); }
+        #hero { padding-top: clamp(2.5rem, 6vw, 5rem); }
+        #hero h1 { letter-spacing: -.045em; }
+        #product-grid > div { border-radius: 3px; padding: 10px; box-shadow: 0 4px 20px rgba(20,20,18,.025); }
+        #product-grid > div:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(20,20,18,.08); }
+        :focus-visible { outline: 2px solid #B89766; outline-offset: 3px; }
+        @media (max-width: 640px) {
+          #announcement-bar { padding-left: 12px; padding-right: 12px; text-align: center; font-size: 9px; letter-spacing: .08em; }
+          header .max-w-7xl { min-height: 76px; height: auto; padding-top: 10px; padding-bottom: 10px; }
+          #hero { padding-bottom: 3.5rem; }
+          #hero h1 { font-size: clamp(2.7rem, 12vw, 4.5rem); }
+          #craftsmanship, #gallery, #concierge, #lookbook { padding-top: 4rem; padding-bottom: 4rem; }
+          #product-grid { gap: 14px; }
+          #product-grid h3 { font-size: 17px; line-height: 1.3; }
+          #toast-container { left: 12px; right: 12px; bottom: 12px; }
+        }
+
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-atelier-black selection:text-white">
+
+    <!-- ANNOUNCEMENT BAR • QUIET LUXURY -->
+    <div id="announcement-bar" class="bg-atelier-black text-atelier-bg text-[11px] py-2 px-6 tracking-[0.2em] uppercase font-mono-atelier flex justify-between items-center border-b border-white/10 z-50 relative">
+        <div class="hidden md:block opacity-75">
+            <span>KINZO DENIM • MADE FOR YOUR EVERYDAY</span>
+        </div>
+        <div class="mx-auto md:mx-0 flex items-center gap-4">
+            <span class="tracking-widest">FRESH DENIM. TIMELESS STYLE. MADE TO MOVE.</span>
+            <span class="hidden sm:inline opacity-40">•</span>
+            <span class="hidden sm:inline text-atelier-gold font-semibold">NEW SEASON • 2026</span>
+        </div>
+        <button onclick="document.getElementById('announcement-bar').style.display='none'" class="hidden md:block opacity-50 hover:opacity-100 transition">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 glass-atelier transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-22 flex items-center justify-between gap-6">
+            
+            <!-- Mobile Menu Drawer Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden text-lg text-atelier-black focus:outline-none p-2">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+
+            <!-- Brand Typography Logo -->
+            <a href="#" class="flex flex-col items-center lg:items-start group">
+                <span class="font-serif-atelier text-3xl sm:text-4xl font-normal tracking-[0.18em] uppercase text-atelier-black group-hover:text-atelier-gold transition duration-500">
+                    KINZO
+                </span>
+                <span class="text-[9px] font-mono-atelier uppercase tracking-[0.35em] text-atelier-muted -mt-1">
+                    DENIM STUDIO
+                </span>
+            </a>
+
+            <!-- Editorial Nav Links -->
+            <nav class="hidden lg:flex items-center gap-10 text-[11px] uppercase tracking-[0.2em] font-medium text-atelier-black">
+                <a href="#hero" class="hover:text-atelier-gold transition">Collection</a>
+                <a href="#craftsmanship" class="hover:text-atelier-gold transition">Our Craft</a>
+                <a href="#gallery" class="hover:text-atelier-gold transition">Silhouettes</a>
+                <a href="#concierge" class="hover:text-atelier-gold transition">Fit Concierge</a>
+                <a href="#lookbook" class="hover:text-atelier-gold transition">Atelier Journal</a>
+            </nav>
+
+            <!-- Right Header Actions -->
+            <div class="flex items-center gap-4 sm:gap-6">
+                <!-- Search Trigger -->
+                <button onclick="toggleSearchOverlay()" class="text-atelier-black hover:text-atelier-gold transition p-2">
+                    <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                </button>
+
+                <!-- Wishlist Trigger -->
+                <button onclick="toggleWishlistModal()" class="relative text-atelier-black hover:text-atelier-gold transition p-2">
+                    <i class="fa-regular fa-bookmark text-xs"></i>
+                    <span id="wishlist-counter" class="absolute -top-0.5 -right-0.5 bg-atelier-gold text-white text-[9px] font-mono-atelier w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+                </button>
+
+                <!-- Shopping Bag Drawer Trigger -->
+                <button onclick="toggleCartDrawer()" class="relative flex items-center gap-2.5 px-4 py-2 border border-atelier-black text-atelier-black hover:bg-atelier-black hover:text-white transition duration-500 text-[11px] font-mono-atelier tracking-widest uppercase">
+                    <span>BAG</span>
+                    <span id="cart-counter" class="text-atelier-gold font-bold">(0)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu Overlay -->
+        <div id="mobile-menu" class="hidden fixed inset-0 top-24 bg-atelier-bg z-50 flex flex-col p-8 gap-8 border-t border-atelier-border lg:hidden">
+            <nav class="flex flex-col gap-6 text-2xl font-serif-atelier uppercase tracking-widest text-atelier-black">
+                <a href="#hero" onclick="toggleMobileMenu()" class="hover:text-atelier-gold">Collection 2026</a>
+                <a href="#craftsmanship" onclick="toggleMobileMenu()" class="hover:text-atelier-gold">The Craftsmanship</a>
+                <a href="#gallery" onclick="toggleMobileMenu()" class="hover:text-atelier-gold">Denim Silhouettes</a>
+                <a href="#concierge" onclick="toggleMobileMenu()" class="hover:text-atelier-gold">Fit Concierge</a>
+                <a href="#lookbook" onclick="toggleMobileMenu()" class="hover:text-atelier-gold">Editorial Lookbook</a>
+            </nav>
+            <div class="mt-auto border-t border-atelier-border pt-6 text-[10px] font-mono-atelier text-atelier-muted">
+                KINZO ATELIER • EVERYDAY DENIM • YOUR WAY
+            </div>
+        </div>
+    </header>
+
+    <!-- SEARCH OVERLAY MODAL -->
+    <div id="search-overlay" class="fixed inset-0 z-50 bg-atelier-bg/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500 flex flex-col p-8 md:p-20">
+        <div class="max-w-4xl mx-auto w-full flex justify-between items-center mb-12">
+            <span class="text-[11px] font-mono-atelier uppercase tracking-widest text-atelier-muted">ARCHIVAL SEARCH</span>
+            <button onclick="toggleSearchOverlay()" class="text-xl text-atelier-black hover:text-atelier-gold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="max-w-4xl mx-auto w-full">
+            <input type="text" id="search-input" placeholder="Search Osaka Raw Selvedge, Wide-Leg, Sculpted High-Waist..." 
+                   class="w-full bg-transparent border-b-2 border-atelier-black py-4 text-2xl md:text-4xl font-serif-atelier focus:outline-none placeholder-atelier-muted/40">
+            <div class="mt-6 flex gap-4 text-xs font-mono-atelier text-atelier-muted uppercase">
+                <span>Popular:</span>
+                <button onclick="quickSearch('Osaka')" class="underline hover:text-atelier-black">Osaka 16oz</button>
+                <button onclick="quickSearch('Cargo')" class="underline hover:text-atelier-black">Archival Cargo</button>
+                <button onclick="quickSearch('Wide')" class="underline hover:text-atelier-black">Sculpted Wide-Leg</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO EDITORIAL SECTION -->
+    <section id="hero" class="relative pt-12 pb-24 border-b border-atelier-border bg-atelier-bg overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Hero Left Copy -->
+                <div class="lg:col-span-6 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-3 px-3 py-1 border border-atelier-border text-[10px] font-mono-atelier uppercase tracking-[0.25em] text-atelier-black bg-white">
+                        <span class="w-1.5 h-1.5 rounded-full bg-atelier-gold"></span>
+                        THE NEW DENIM EDIT • 2026
+                    </div>
+
+                    <h1 class="font-serif-atelier text-5xl sm:text-7xl lg:text-8xl font-normal leading-[0.92] tracking-tight text-atelier-black uppercase">
+                        EVERYDAY <br/>
+                        <span class="italic font-light text-atelier-muted">DENIM, REFINED</span> <br/>
+                        YOUR WAY.
+                    </h1>
+
+                    <!-- Bengali & English Hybrid Editorial Statement -->
+                    <div class="space-y-2 border-l-2 border-atelier-gold pl-4 max-w-lg mx-auto lg:mx-0">
+                        <p class="text-xs uppercase tracking-widest font-mono-atelier text-atelier-gold">
+                            KINZO DENIM • EVERYDAY ESSENTIALS
+                        </p>
+                        <p class="text-sm font-light text-gray-700 leading-relaxed">
+                            আপনার প্রতিদিনের স্টাইলের জন্য আরামদায়ক, ট্রেন্ডি ও সহজে পরার মতো জিন্স। Find your fit, style your way, and make every outfit feel like you.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 pt-2">
+                        <a href="#gallery" class="w-full sm:w-auto px-8 py-4 bg-atelier-black text-white text-[11px] font-mono-atelier uppercase tracking-[0.25em] hover:bg-atelier-gold transition duration-500 text-center border border-atelier-black">
+                            SHOP THE COLLECTION
+                        </a>
+                        <a href="#craftsmanship" class="w-full sm:w-auto px-8 py-4 bg-transparent text-atelier-black border border-atelier-border text-[11px] font-mono-atelier uppercase tracking-[0.25em] hover:border-atelier-black transition duration-500 text-center">
+                            WHY KINZO DENIM
+                        </a>
+                    </div>
+
+                    <div class="pt-8 border-t border-atelier-border grid grid-cols-3 gap-6 text-center lg:text-left font-mono-atelier text-[10px] uppercase tracking-widest text-atelier-muted">
+                        <div>
+                            <span class="block text-base font-serif-atelier text-atelier-black font-normal">14.5oz - 16oz</span>
+                            Made to Move
+                        </div>
+                        <div>
+                            <span class="block text-base font-serif-atelier text-atelier-black font-normal">Osaka Weave</span>
+                            For Every Day
+                        </div>
+                        <div>
+                            <span class="block text-base font-serif-atelier text-atelier-black font-normal">Your Style</span>
+                            Fresh Looks
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Image Showcase -->
+                <div class="lg:col-span-6">
+                    <div class="relative mx-auto max-w-lg lg:max-w-none">
+                        <div class="img-zoom-container bg-white border border-atelier-border p-3 shadow-xl">
+                            <div class="aspect-[3/4] relative overflow-hidden bg-gray-100">
+                                <img id="hero-img" src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=1200&q=80" 
+                                     alt="KINZO Atelier Archival Denim" 
+                                     class="w-full h-full object-cover">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                                
+                                <div class="absolute bottom-6 left-6 right-6 p-5 bg-white/90 backdrop-blur-md border border-atelier-border">
+                                    <div class="flex justify-between items-end">
+                                        <div>
+                                            <span class="text-[9px] font-mono-atelier text-atelier-gold uppercase tracking-[0.2em]">LOOK 01 • SS26</span>
+                                            <h3 class="font-serif-atelier text-2xl text-atelier-black">Osaka 16oz Sculpted Wide-Leg</h3>
+                                            <p class="text-xs font-mono-atelier text-atelier-muted">৳1,890</p>
+                                        </div>
+                                        <button onclick="openProductModal('1')" class="px-4 py-2 bg-atelier-black text-white text-[10px] font-mono-atelier uppercase tracking-widest hover:bg-atelier-gold transition">
+                                            VIEW SILHOUETTE
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CRAFTSMANSHIP & ATELIER NARRATIVE SECTION -->
+    <section id="craftsmanship" class="py-24 bg-white border-b border-atelier-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-[10px] font-mono-atelier text-atelier-gold uppercase tracking-[0.3em]">CRAFT & PHILOSOPHY</span>
+                <h2 class="font-serif-atelier text-4xl sm:text-5xl uppercase text-atelier-black">DENIM THAT FITS YOUR LIFE</h2>
+                <div class="w-12 h-px bg-atelier-gold mx-auto"></div>
+                <p class="text-sm text-gray-600 leading-relaxed font-light">
+                    স্টাইল আর আরামের মধ্যে বেছে নিতে হবে না। KINZO Denim brings together versatile fits, everyday comfort and looks that work from casual days to nights out.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pillar 1 -->
+                <div class="p-8 border border-atelier-border bg-atelier-bg space-y-4 hover:border-atelier-black transition duration-500">
+                    <span class="text-xs font-mono-atelier text-atelier-gold">01 / WEIGHT & TEXTURE</span>
+                    <h3 class="font-serif-atelier text-2xl text-atelier-black">Comfort-First Fits</h3>
+                    <p class="text-xs text-atelier-muted leading-relaxed">
+                        Heavyweight Osaka woven denim engineered with structural rigidity to maintain clean puddle breaks over luxury footwear.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="p-8 border border-atelier-border bg-atelier-bg space-y-4 hover:border-atelier-black transition duration-500">
+                    <span class="text-xs font-mono-atelier text-atelier-gold">02 / ARCHITECTURAL CUT</span>
+                    <h3 class="font-serif-atelier text-2xl text-atelier-black">Styles for Your Mood</h3>
+                    <p class="text-xs text-atelier-muted leading-relaxed">
+                        Patterned with zero-waist-gap tailoring, extended inseams, and clean side seams for a sweeping editorial drop.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="p-8 border border-atelier-border bg-atelier-bg space-y-4 hover:border-atelier-black transition duration-500">
+                    <span class="text-xs font-mono-atelier text-atelier-gold">03 / HAND CRAFTSMANSHIP</span>
+                    <h3 class="font-serif-atelier text-2xl text-atelier-black">Made to Style</h3>
+                    <p class="text-xs text-atelier-muted leading-relaxed">
+                        Individually hand-distressed with custom oxidized brushed steel rivets and natural vintage tint treatments.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT GALLERY WITH FILTERS -->
+    <section id="gallery" class="py-24 max-w-7xl mx-auto px-6 lg:px-12">
+        <p class="mb-6 text-xs text-atelier-muted bg-white border border-atelier-border px-4 py-3">Demo storefront: product photos and prices are sample content. Replace them with your actual jeans, sizes and prices before publishing.</p>
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-atelier-border pb-8">
+            <div>
+                <span class="text-[10px] font-mono-atelier text-atelier-gold uppercase tracking-[0.3em]">FIND YOUR NEXT FAVOURITE</span>
+                <h2 class="font-serif-atelier text-4xl sm:text-5xl uppercase text-atelier-black">SHOP THE JEANS EDIT</h2>
+            </div>
+
+            <!-- Sorting Dropdown -->
+            <div class="flex items-center gap-3">
+                <span class="text-[10px] font-mono-atelier uppercase text-atelier-muted">Sort By:</span>
+                <select id="sort-select" onchange="applyFilters()" class="bg-white border border-atelier-border text-xs font-mono-atelier uppercase px-4 py-2.5 text-atelier-black focus:outline-none focus:border-atelier-black">
+                    <option value="featured">Featured Archives</option>
+                    <option value="low-high">Price: Low to High</option>
+                    <option value="high-low">Price: High to Low</option>
+                    <option value="weight">Denim Weight (Oz)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+            
+            <!-- Sidebar Filter Panel -->
+            <aside class="space-y-8 lg:col-span-1">
+                <div class="bg-white border border-atelier-border p-6 space-y-6 sticky top-28 shadow-sm">
+                    <div class="flex items-center justify-between border-b border-atelier-border pb-4">
+                        <h3 class="font-serif-atelier text-lg uppercase text-atelier-black">Filters</h3>
+                        <button onclick="resetFilters()" class="text-[10px] font-mono-atelier text-atelier-muted hover:text-atelier-black uppercase underline">Reset</button>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div>
+                        <label class="block text-[11px] font-mono-atelier uppercase text-atelier-black mb-3">Fit Silhouette</label>
+                        <div class="space-y-2.5 text-xs text-gray-600">
+                            <label class="flex items-center gap-3 cursor-pointer hover:text-atelier-black">
+                                <input type="checkbox" value="Wide-Leg" class="filter-style accent-atelier-black" onchange="applyFilters()">
+                                <span>Sculpted Wide-Leg</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer hover:text-atelier-black">
+                                <input type="checkbox" value="Baggy" class="filter-style accent-atelier-black" onchange="applyFilters()">
+                                <span>Oversized Archival</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer hover:text-atelier-black">
+                                <input type="checkbox" value="Cargo" class="filter-style accent-atelier-black" onchange="applyFilters()">
+                                <span>Utility Cargo</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer hover:text-atelier-black">
+                                <input type="checkbox" value="High-Waist" class="filter-style accent-atelier-black" onchange="applyFilters()">
+                                <span>Tailored High-Waist</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Size Filter -->
+                    <div>
+                        <label class="block text-[11px] font-mono-atelier uppercase text-atelier-black mb-3">Waist (Inches)</label>
+                        <div class="grid grid-cols-5 gap-1.5 text-center font-mono-atelier text-xs" id="size-filter-group">
+                            <button onclick="toggleSizeFilter(this, '28')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">28</button>
+                            <button onclick="toggleSizeFilter(this, '30')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">30</button>
+                            <button onclick="toggleSizeFilter(this, '32')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">32</button>
+                            <button onclick="toggleSizeFilter(this, '34')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">34</button>
+                            <button onclick="toggleSizeFilter(this, '36')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">36</button>
+                        </div>
+                    </div>
+
+                    <!-- Max Price Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2 text-[11px] font-mono-atelier">
+                            <span class="text-atelier-black uppercase">Max Price</span>
+                            <span id="price-val" class="text-atelier-gold font-bold">৳2,500</span>
+                        </div>
+                        <input type="range" id="price-range" min="1000" max="2500" step="100" value="2500" oninput="updatePriceLabel(this.value); applyFilters();" class="w-full accent-atelier-black bg-atelier-border h-1 appearance-none cursor-pointer">
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Cards Area -->
+            <main class="lg:col-span-3">
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Products injected dynamically -->
+                </div>
+
+                <div id="empty-state" class="hidden text-center py-20 bg-white border border-atelier-border">
+                    <p class="font-serif-atelier text-2xl text-atelier-black">No matching jeans found</p>
+                    <p class="text-xs font-mono-atelier text-atelier-muted mt-2">Try changing your filters to find your perfect pair.</p>
+                    <button onclick="resetFilters()" class="mt-6 px-6 py-3 bg-atelier-black text-white font-mono-atelier text-xs uppercase tracking-widest">Reset Filters</button>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- LUXURY THE FIT FINDER -->
+    <section id="concierge" class="py-24 bg-atelier-goldLight border-y border-atelier-border relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <span class="text-[10px] font-mono-atelier text-atelier-gold uppercase tracking-[0.3em]">THE FIT FINDER</span>
+            <h2 class="font-serif-atelier text-4xl sm:text-5xl uppercase text-atelier-black mt-2 mb-4">FIND YOUR EVERYDAY FIT</h2>
+            <p class="text-sm text-gray-600 max-w-xl mx-auto mb-10 font-light leading-relaxed">
+                আপনার পছন্দের ফিট আর কোমরের মাপ অনুযায়ী জিন্স বেছে নিতে কয়েকটি তথ্য দিন। Let’s find a fit that feels right for you.
+            </p>
+
+            <div class="bg-white border border-atelier-border p-8 md:p-12 text-left space-y-8 shadow-xl max-w-2xl mx-auto">
+                <!-- Step 1: Height -->
+                <div>
+                    <label class="block text-[11px] font-mono-atelier uppercase text-atelier-black mb-2">1. Height & Stature</label>
+                    <select id="quiz-height" class="w-full bg-atelier-bg border border-atelier-border p-3.5 text-xs text-atelier-black focus:outline-none focus:border-atelier-black font-mono-atelier">
+                        <option value="petite">Petite Frame (Under 5'6" / 168cm)</option>
+                        <option value="regular" selected>Regular Frame (5'7" - 5'11" / 170 - 180cm)</option>
+                        <option value="tall">Tall Stature (6'0"+ / 183cm+)</option>
+                    </select>
+                </div>
+
+                <!-- Step 2: Silhouette Break -->
+                <div>
+                    <label class="block text-[11px] font-mono-atelier uppercase text-atelier-black mb-2">2. Desired Hem Break Over Footwear</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button type="button" onclick="selectQuizFit(this, 'clean')" class="quiz-fit-btn border border-atelier-border p-3 text-xs font-mono-atelier text-center hover:border-atelier-black transition active-quiz-fit bg-atelier-black text-white">Clean Break</button>
+                        <button type="button" onclick="selectQuizFit(this, 'puddle')" class="quiz-fit-btn border border-atelier-border p-3 text-xs font-mono-atelier text-center hover:border-atelier-black transition">Full Puddle Drape</button>
+                        <button type="button" onclick="selectQuizFit(this, 'high')" class="quiz-fit-btn border border-atelier-border p-3 text-xs font-mono-atelier text-center hover:border-atelier-black transition">Tailored High Rise</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Natural Waist -->
+                <div>
+                    <label class="block text-[11px] font-mono-atelier uppercase text-atelier-black mb-2">3. Natural Waist Measurement (Inches)</label>
+                    <input type="number" id="quiz-waist" value="30" min="26" max="40" class="w-full bg-atelier-bg border border-atelier-border p-3.5 text-xs font-mono-atelier font-bold text-atelier-black focus:outline-none">
+                </div>
+
+                <button onclick="calculateFit()" class="w-full py-4 bg-atelier-black text-white text-[11px] font-mono-atelier uppercase tracking-[0.25em] hover:bg-atelier-gold transition duration-500">
+                    FIND MY FIT
+                </button>
+
+                <!-- Recommendation Output -->
+                <div id="quiz-result" class="hidden p-6 bg-atelier-bg border border-atelier-border text-center space-y-2">
+                    <span class="text-[10px] font-mono-atelier text-atelier-muted uppercase tracking-widest block">RECOMMENDED ATELIER CUT</span>
+                    <span id="quiz-recommended-size" class="font-serif-atelier text-3xl text-atelier-gold block">WAIST 30 • EXTENDED INSEAM</span>
+                    <p id="quiz-result-desc" class="text-xs text-gray-600 font-light">Provides a dramatic floor drape with zero waist gap engineering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOOKBOOK JOURNAL -->
+    <section id="lookbook" class="py-24 max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="text-center mb-16">
+            <span class="text-[10px] font-mono-atelier text-atelier-gold uppercase tracking-[0.3em]">STYLE INSPIRATION</span>
+            <h2 class="font-serif-atelier text-4xl sm:text-5xl uppercase text-atelier-black">WAYS TO WEAR DENIM</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="img-zoom-container bg-white border border-atelier-border p-3">
+                <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Look 1" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4 text-center space-y-1">
+                    <span class="text-[9px] font-mono-atelier text-atelier-gold uppercase tracking-widest">ARCHIVE 01</span>
+                    <h3 class="font-serif-atelier text-xl text-atelier-black">Osaka 16oz Raw Indigo</h3>
+                </div>
+            </div>
+
+            <div class="img-zoom-container bg-white border border-atelier-border p-3">
+                <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80" alt="Look 2" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4 text-center space-y-1">
+                    <span class="text-[9px] font-mono-atelier text-atelier-gold uppercase tracking-widest">ARCHIVE 02</span>
+                    <h3 class="font-serif-atelier text-xl text-atelier-black">Archival Tactical Cargo</h3>
+                </div>
+            </div>
+
+            <div class="img-zoom-container bg-white border border-atelier-border p-3">
+                <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80" alt="Look 3" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4 text-center space-y-1">
+                    <span class="text-[9px] font-mono-atelier text-atelier-gold uppercase tracking-widest">ARCHIVE 03</span>
+                    <h3 class="font-serif-atelier text-xl text-atelier-black">Pitch Black Tailored High-Waist</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP BESPOKE PRE-ORDER NEWSLETTER -->
+    <section class="py-20 bg-atelier-black text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
+            <span class="text-[10px] font-mono-atelier text-atelier-gold uppercase tracking-[0.3em]">STAY IN THE LOOP</span>
+            <h2 class="font-serif-atelier text-4xl sm:text-5xl uppercase tracking-wider">A LITTLE MORE KINZO</h2>
+            <p class="text-xs text-gray-400 max-w-md mx-auto font-light leading-relaxed">
+                Get updates on new arrivals, fresh fits and the latest KINZO styles.
+            </p>
+            
+            <form onsubmit="handleNewsletter(event)" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3 pt-4">
+                <input type="email" placeholder="ENTER YOUR EMAIL ADDRESS" required 
+                       class="flex-1 bg-transparent border border-white/30 px-4 py-3.5 text-xs font-mono-atelier text-white focus:outline-none focus:border-atelier-gold placeholder-gray-500">
+                <button type="submit" class="px-8 py-3.5 bg-atelier-gold text-white text-[10px] font-mono-atelier uppercase tracking-widest hover:bg-white hover:text-atelier-black transition duration-500">
+                    GET UPDATES
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-atelier-bg border-t border-atelier-border text-xs py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div class="space-y-4">
+                <span class="font-serif-atelier text-3xl font-normal text-atelier-black uppercase tracking-widest">KINZO</span>
+                <p class="text-atelier-muted text-xs font-light leading-relaxed">
+                    Everyday jeans, fresh styling and fits made to feel like you. Find your next favourite pair with KINZO Denim.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-mono-atelier text-[10px] uppercase text-atelier-black mb-4 tracking-widest">NAVIGATION</h4>
+                <ul class="space-y-2 text-atelier-muted font-light">
+                    <li><a href="#gallery" class="hover:text-atelier-black transition">Archival Silhouettes</a></li>
+                    <li><a href="#craftsmanship" class="hover:text-atelier-black transition">Atelier Philosophy</a></li>
+                    <li><a href="#concierge" class="hover:text-atelier-black transition">Bespoke Fit Calculator</a></li>
+                    <li><a href="#lookbook" class="hover:text-atelier-black transition">Visual Lookbook</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-mono-atelier text-[10px] uppercase text-atelier-black mb-4 tracking-widest">CLIENT CONCIERGE</h4>
+                <ul class="space-y-2 text-atelier-muted font-light">
+                    <li><a href="#" class="hover:text-atelier-black transition">Delivery Across Bangladesh</a></li>
+                    <li><a href="#" class="hover:text-atelier-black transition">Archival Care & Washing Guide</a></li>
+                    <li><a href="#" class="hover:text-atelier-black transition">Complimentary Returns</a></li>
+                    <li><a href="#" class="hover:text-atelier-black transition">Contact Private Client Team</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-mono-atelier text-[10px] uppercase text-atelier-black mb-4 tracking-widest">LOCATIONS</h4>
+                <p class="text-atelier-muted text-xs font-light leading-relaxed">
+                    KINZO DENIM<br/>
+                    BANGLADESH • ONLINE STORE
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 mt-12 pt-8 border-t border-atelier-border flex flex-col sm:flex-row justify-between items-center text-[10px] font-mono-atelier text-atelier-muted">
+            <div>&copy; 2026 KINZO DENIM STUDIO LTD. ALL RIGHTS RESERVED.</div>
+            <div class="mt-2 sm:mt-0">HIGH-FASHION RAW DENIM DIVISION</div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OVER SHOPPING BAG DRAWER -->
+    <div id="cart-drawer-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/50 z-50 opacity-0 pointer-events-none transition-opacity duration-500 backdrop-blur-xs"></div>
+    
+    <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white border-l border-atelier-border z-50 transform translate-x-full transition-transform duration-500 flex flex-col justify-between shadow-2xl">
+        <div class="p-6 border-b border-atelier-border flex items-center justify-between">
+            <span class="font-serif-atelier text-2xl uppercase text-atelier-black">SHOPPING BAG (<span id="cart-drawer-count">0</span>)</span>
+            <button onclick="toggleCartDrawer()" class="text-atelier-black hover:text-atelier-gold text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Free Shipping Progress -->
+        <div class="p-4 bg-atelier-goldLight border-b border-atelier-border text-[11px] font-mono-atelier text-atelier-black">
+            <div id="shipping-progress-text">Add <span class="font-bold">৳2,500</span> for free delivery</div>
+            <div class="w-full bg-atelier-border h-1 mt-2">
+                <div id="shipping-progress-bar" class="bg-atelier-gold h-full w-0 transition-all duration-500"></div>
+            </div>
+        </div>
+
+        <div id="cart-items-container" class="p-6 flex-1 overflow-y-auto space-y-6">
+            <!-- Items injected dynamically -->
+        </div>
+
+        <!-- Checkout Summary -->
+        <div class="p-6 border-t border-atelier-border bg-atelier-bg space-y-4 font-mono-atelier text-xs">
+            <div class="flex gap-2">
+                <input type="text" id="coupon-code" placeholder="PROMO CODE (KINZO10)" class="flex-1 bg-white border border-atelier-border px-3 py-2 text-xs uppercase focus:outline-none">
+                <button onclick="applyCoupon()" class="px-4 py-2 bg-atelier-black text-white uppercase text-[10px] tracking-widest">APPLY</button>
+            </div>
+
+            <div class="space-y-2 text-gray-600">
+                <div class="flex justify-between">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal" class="text-atelier-black font-bold">৳0</span>
+                </div>
+                <div id="discount-row" class="flex justify-between text-atelier-gold font-bold hidden">
+                    <span>KINZO offer (10%):</span>
+                    <span id="cart-discount">-৳0</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Delivery:</span>
+                    <span id="cart-shipping-fee" class="text-atelier-black font-bold">৳80</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-atelier-black pt-3 border-t border-atelier-border">
+                    <span>Total Amount:</span>
+                    <span id="cart-final-total">৳0</span>
+                </div>
+            </div>
+
+            <button onclick="handleCheckout()" class="w-full py-4 bg-atelier-black text-white uppercase tracking-[0.25em] text-[10px] hover:bg-atelier-gold transition duration-500">
+                PROCEED TO CHECKOUT
+            </button>
+        </div>
+    </aside>
+
+    <!-- PRODUCT QUICK VIEW MODAL -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="bg-white border border-atelier-border max-w-4xl w-full overflow-hidden relative max-h-[90vh] flex flex-col md:flex-row shadow-2xl">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 bg-white/80 p-2 text-atelier-black hover:bg-atelier-black hover:text-white transition">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+
+            <div class="md:w-1/2 bg-gray-100 aspect-square relative">
+                <img id="modal-img" src="" alt="Product" class="w-full h-full object-cover">
+            </div>
+
+            <div class="md:w-1/2 p-8 overflow-y-auto flex flex-col justify-between space-y-6">
+                <div>
+                    <span id="modal-badge" class="text-[9px] font-mono-atelier px-2 py-1 bg-atelier-black text-white uppercase tracking-widest">ARCHIVAL</span>
+                    <h3 id="modal-title" class="font-serif-atelier text-3xl text-atelier-black mt-3">Product Name</h3>
+                    <div id="modal-price" class="text-lg font-mono-atelier text-atelier-gold mt-1">৳0</div>
+                    <span id="modal-weight" class="inline-block text-[10px] font-mono-atelier text-atelier-muted mt-1 uppercase">16oz Raw Japanese Selvedge</span>
+                    
+                    <p id="modal-desc" class="text-xs text-gray-600 mt-4 leading-relaxed font-light">
+                        Architectural wide-leg cut engineered in Osaka, Japan. Hand-finished with subtle distressing and custom hardware.
+                    </p>
+
+                    <div class="mt-6">
+                        <label class="block text-[10px] font-mono-atelier uppercase text-atelier-black mb-2">Select Waist Size</label>
+                        <div class="flex gap-2" id="modal-sizes"></div>
+                    </div>
+                </div>
+
+                <button id="modal-add-btn" onclick="" class="w-full py-4 bg-atelier-black text-white text-[10px] font-mono-atelier uppercase tracking-[0.25em] hover:bg-atelier-gold transition duration-500">
+                    ADD TO BAG
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WISHLIST MODAL -->
+    <div id="wishlist-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="bg-white border border-atelier-border max-w-md w-full p-8 relative">
+            <button onclick="toggleWishlistModal()" class="absolute top-4 right-4 text-atelier-black hover:text-atelier-gold">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="font-serif-atelier text-2xl uppercase text-atelier-black mb-6">SAVED SILHOUETTES</h3>
+            <div id="wishlist-items-container" class="max-h-80 overflow-y-auto space-y-4"></div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATIONS -->
+    <div id="toast-container" class="fixed bottom-8 right-8 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- ARCHIVAL LUXURY PRODUCT DATA ---
+        const PRODUCTS = [
+            {
+                id: '1',
+                name: 'Osaka 16oz Sculpted Wide-Leg',
+                category: 'Wide-Leg',
+                style: 'Wide-Leg',
+                price: 1890,
+                weight: '16oz Osaka Selvedge',
+                badge: 'EDITORIAL DROP',
+                sizes: ['28', '30', '32', '34', '36'],
+                image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80',
+                description: 'Sculptural wide-leg raw denim woven on vintage Osaka shuttle looms. Deep indigo dye designed to reveal personal wear patterns.'
+            },
+            {
+                id: '2',
+                name: 'Archival Tactical Cargo Denim',
+                category: 'Cargo',
+                style: 'Cargo',
+                price: 2190,
+                weight: '15.5oz Ring-Spun Cotton',
+                badge: 'LIMITED RUN',
+                sizes: ['28', '30', '32', '34'],
+                image: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=80',
+                description: '3D spatial utility cargo compartments with concealed silver snaps and an exaggerated floor-sweeping break.'
+            },
+            {
+                id: '3',
+                name: 'High-Waist Tailored Raw Selvedge',
+                category: 'High-Waist',
+                style: 'High-Waist',
+                price: 1790,
+                weight: '14.5oz Raw Indigo',
+                badge: 'ATELIER CLASSIC',
+                sizes: ['28', '30', '32', '34', '36'],
+                image: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?auto=format&fit=crop&w=800&q=80',
+                description: 'High-rise waist tailoring engineered with a continuous unbroken leg press crease for formal streetwear styling.'
+            },
+            {
+                id: '4',
+                name: 'Vintage Distressed Oversized Baggy',
+                category: 'Baggy',
+                style: 'Baggy',
+                price: 1590,
+                weight: '15.0oz Hand-Treated',
+                badge: 'HAND CRAFTED',
+                sizes: ['30', '32', '34', '36'],
+                image: 'https://images.unsplash.com/photo-1542272604-780c36856d66?auto=format&fit=crop&w=800&q=80',
+                description: 'Hand-abraded knee wear patterns with stone-wash tinting and raw frayed hem lines.'
+            },
+            {
+                id: '5',
+                name: 'Pitch Black Architectural Flare',
+                category: 'Wide-Leg',
+                style: 'Wide-Leg',
+                price: 1990,
+                weight: '16oz Sulfur Black',
+                badge: 'RESTOCKED',
+                sizes: ['28', '30', '32', '34'],
+                image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',
+                description: 'Sulfur-dyed deep obsidian black denim with extended rise and reinforced brass hardware.'
+            },
+            {
+                id: '6',
+                name: 'Dirty Tinted Vintage Wide-Leg',
+                category: 'Baggy',
+                style: 'Baggy',
+                price: 1850,
+                weight: '15.5oz Tinted Selvedge',
+                badge: 'ARCHIVAL RARE',
+                sizes: ['28', '30', '32', '34', '36'],
+                image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80',
+                description: '90s archival dirty-wash tinting with exaggerated hem puddling for effortless luxury layering.'
+            }
+        ];
+
+        // --- GLOBAL APP STATE ---
+        let cart = [];
+        let wishlist = [];
+        let appliedDiscount = 0;
+        let selectedSizeFilter = null;
+        let selectedModalSize = '30';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts(PRODUCTS);
+        });
+
+        // --- RENDER PRODUCTS GRID ---
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            const emptyState = document.getElementById('empty-state');
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = items.map(product => {
+                const isWishlisted = wishlist.includes(product.id);
+                return `
+                    <div class="bg-white border border-atelier-border p-3 group hover:border-atelier-black transition duration-500 flex flex-col justify-between">
+                        <div class="relative aspect-[3/4] bg-gray-100 overflow-hidden cursor-pointer img-zoom-container" onclick="openProductModal('${product.id}')">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                            
+                            <span class="absolute top-3 left-3 text-[9px] font-mono-atelier px-2 py-1 bg-atelier-black text-white uppercase tracking-widest">
+                                ${product.badge}
+                            </span>
+
+                            <button onclick="event.stopPropagation(); toggleWishlist('${product.id}')" class="absolute top-3 right-3 w-8 h-8 bg-white/90 text-atelier-black flex items-center justify-center hover:bg-atelier-black hover:text-white transition">
+                                <i class="${isWishlisted ? 'fa-solid text-atelier-gold' : 'fa-regular'} fa-bookmark text-xs"></i>
+                            </button>
+
+                            <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 flex justify-center">
+                                <button onclick="event.stopPropagation(); openProductModal('${product.id}')" class="w-full py-2.5 bg-white text-atelier-black text-[10px] font-mono-atelier uppercase tracking-widest hover:bg-atelier-black hover:text-white transition">
+                                    QUICK VIEW
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 space-y-2">
+                            <span class="text-[9px] font-mono-atelier text-atelier-muted uppercase block">${product.weight}</span>
+                            <h3 onclick="openProductModal('${product.id}')" class="font-serif-atelier text-xl text-atelier-black hover:text-atelier-gold cursor-pointer transition">
+                                ${product.name}
+                            </h3>
+
+                            <div class="flex items-center justify-between text-xs font-mono-atelier pt-2 border-t border-atelier-border">
+                                <span class="text-atelier-black font-bold">৳${product.price.toLocaleString("en-BD")}</span>
+                                <button onclick="addToCart('${product.id}', '${product.sizes[0]}')" class="text-[10px] text-atelier-gold hover:text-atelier-black uppercase font-bold transition">
+                                    + BAG
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // --- FILTERS & SORTING ---
+        function applyFilters() {
+            let filtered = [...PRODUCTS];
+
+            const searchVal = (document.getElementById('search-input').value || '').toLowerCase();
+            if (searchVal) {
+                filtered = filtered.filter(p => p.name.toLowerCase().includes(searchVal) || p.style.toLowerCase().includes(searchVal));
+            }
+
+            const selectedStyles = Array.from(document.querySelectorAll('.filter-style:checked')).map(cb => cb.value);
+            if (selectedStyles.length > 0) {
+                filtered = filtered.filter(p => selectedStyles.includes(p.style) || selectedStyles.includes(p.category));
+            }
+
+            if (selectedSizeFilter) {
+                filtered = filtered.filter(p => p.sizes.includes(selectedSizeFilter));
+            }
+
+            const maxPrice = parseFloat(document.getElementById('price-range').value);
+            filtered = filtered.filter(p => p.price <= maxPrice);
+
+            const sortOption = document.getElementById('sort-select').value;
+            if (sortOption === 'low-high') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortOption === 'high-low') {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            renderProducts(filtered);
+        }
+
+        function toggleSizeFilter(btn, size) {
+            const buttons = document.querySelectorAll('.size-btn');
+            if (selectedSizeFilter === size) {
+                selectedSizeFilter = null;
+                btn.classList.remove('bg-atelier-black', 'text-white');
+            } else {
+                buttons.forEach(b => b.classList.remove('bg-atelier-black', 'text-white'));
+                selectedSizeFilter = size;
+                btn.classList.add('bg-atelier-black', 'text-white');
+            }
+            applyFilters();
+        }
+
+        function updatePriceLabel(val) {
+            document.getElementById('price-val').innerText = `৳${Number(val).toLocaleString('en-BD')}`;
+        }
+
+        function resetFilters() {
+            document.querySelectorAll('.filter-style').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('bg-atelier-black', 'text-white'));
+            selectedSizeFilter = null;
+            document.getElementById('price-range').value = 2500;
+            updatePriceLabel(2500);
+            document.getElementById('search-input').value = '';
+            document.getElementById('sort-select').value = 'featured';
+            applyFilters();
+        }
+
+        function quickSearch(query) {
+            document.getElementById('search-input').value = query;
+            applyFilters();
+            toggleSearchOverlay();
+        }
+
+        // --- CART MANAGEMENT ---
+        function addToCart(productId, size = '30') {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingIndex = cart.findIndex(item => item.id === productId && item.size === size);
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    weight: product.weight,
+                    size: size,
+                    qty: 1
+                });
+            }
+
+            updateCartUI();
+            showToast(`Added ${product.name} (Waist ${size}) to Bag.`);
+        }
+
+        function updateQuantity(id, size, change) {
+            const index = cart.findIndex(item => item.id === id && item.size === size);
+            if (index > -1) {
+                cart[index].qty += change;
+                if (cart[index].qty <= 0) {
+                    cart.splice(index, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            document.getElementById('cart-counter').innerText = `(${totalCount})`;
+            document.getElementById('cart-drawer-count').innerText = totalCount;
+
+            const container = document.getElementById('cart-items-container');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-atelier-muted font-mono-atelier">
+                        <i class="fa-solid fa-bag-shopping text-2xl mb-2 opacity-30"></i>
+                        <p class="text-xs uppercase">Your Atelier Shopping Bag is empty.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex gap-4 p-3 border border-atelier-border bg-atelier-bg">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover">
+                        <div class="flex-1 flex flex-col justify-between font-mono-atelier text-xs">
+                            <div>
+                                <h4 class="font-serif-atelier text-base text-atelier-black font-normal line-clamp-1">${item.name}</h4>
+                                <span class="text-[10px] text-atelier-muted block">Waist Size: <strong class="text-atelier-black">${item.size}</strong></span>
+                            </div>
+                            <div class="flex items-center justify-between mt-2">
+                                <div class="flex items-center border border-atelier-border bg-white px-2 py-0.5">
+                                    <button onclick="updateQuantity('${item.id}', '${item.size}', -1)" class="px-1 text-gray-500 font-bold">-</button>
+                                    <span class="px-2 font-bold">${item.qty}</span>
+                                    <button onclick="updateQuantity('${item.id}', '${item.size}', 1)" class="px-1 text-gray-500 font-bold">+</button>
+                                </div>
+                                <span class="font-bold text-atelier-black">৳${(item.price * item.qty).toLocaleString("en-BD")}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            const discountVal = subtotal * appliedDiscount;
+            const shipping = subtotal >= 2500 || subtotal === 0 ? 0 : 80;
+            const finalTotal = Math.max(0, subtotal - discountVal + shipping);
+
+            document.getElementById('cart-subtotal').innerText = `৳${subtotal.toLocaleString("en-BD")}`;
+            document.getElementById('cart-shipping-fee').innerText = shipping === 0 ? 'COMPLIMENTARY' : `৳${shipping}`;
+            document.getElementById('cart-final-total').innerText = `৳${finalTotal.toLocaleString("en-BD")}`;
+
+            if (appliedDiscount > 0) {
+                document.getElementById('discount-row').classList.remove('hidden');
+                document.getElementById('cart-discount').innerText = `-৳${Math.round(discountVal).toLocaleString("en-BD")}`;
+            }
+
+            const threshold = 2500;
+            const progress = Math.min(100, (subtotal / threshold) * 100);
+            document.getElementById('shipping-progress-bar').style.width = `${progress}%`;
+            
+            if (subtotal >= threshold) {
+                document.getElementById('shipping-progress-text').innerHTML = `<span class="text-atelier-black font-bold"><i class="fa-solid fa-circle-check text-atelier-gold"></i> Free delivery unlocked!</span>`;
+            } else {
+                const diff = Math.round(threshold - subtotal).toLocaleString("en-BD");
+                document.getElementById('shipping-progress-text').innerHTML = `Add <span class="font-bold">৳${diff}</span> for free delivery`;
+            }
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (isOpen) {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        function applyCoupon() {
+            const code = document.getElementById('coupon-code').value.trim().toUpperCase();
+            if (code === 'KINZO10') {
+                appliedDiscount = 0.10;
+                showToast('KINZO10 Privileged 20% Discount Applied!');
+                updateCartUI();
+            } else {
+                showToast('Invalid Atelier Code');
+            }
+        }
+
+        function handleCheckout() {
+            if (cart.length === 0) {
+                showToast('Shopping bag is empty');
+                return;
+            }
+            showToast('Demo checkout only — connect an order method before accepting real orders.', 'success');
+            setTimeout(() => {
+                alert('Demo checkout only — connect an order method before accepting real orders.');
+                cart = [];
+                updateCartUI();
+                toggleCartDrawer();
+            }, 1500);
+        }
+
+        // --- PRODUCT MODAL ---
+        function openProductModal(id) {
+            const product = PRODUCTS.find(p => p.id === id);
+            if (!product) return;
+
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-price').innerText = `৳${product.price.toLocaleString("en-BD")}`;
+            document.getElementById('modal-badge').innerText = product.badge;
+            document.getElementById('modal-weight').innerText = product.weight;
+            document.getElementById('modal-desc').innerText = product.description;
+
+            selectedModalSize = product.sizes[0];
+            const sizeContainer = document.getElementById('modal-sizes');
+            sizeContainer.innerHTML = product.sizes.map(s => `
+                <button onclick="selectModalSize(this, '${s}')" class="modal-size-btn border ${s === selectedModalSize ? 'border-atelier-black bg-atelier-black text-white' : 'border-atelier-border text-atelier-black'} px-3 py-1.5 text-xs font-mono-atelier transition">
+                    ${s}
+                </button>
+            `).join('');
+
+            document.getElementById('modal-add-btn').onclick = () => {
+                addToCart(product.id, selectedModalSize);
+                closeProductModal();
+                toggleCartDrawer();
+            };
+
+            const modal = document.getElementById('product-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function selectModalSize(btn, size) {
+            selectedModalSize = size;
+            document.querySelectorAll('.modal-size-btn').forEach(b => {
+                b.classList.remove('border-atelier-black', 'bg-atelier-black', 'text-white');
+            });
+            btn.classList.add('border-atelier-black', 'bg-atelier-black', 'text-white');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // --- WISHLIST ---
+        function toggleWishlist(id) {
+            const idx = wishlist.indexOf(id);
+            if (idx > -1) {
+                wishlist.splice(idx, 1);
+                showToast('Removed from Saved Silhouettes');
+            } else {
+                wishlist.push(id);
+                showToast('Saved to Atelier Bookmarks');
+            }
+            document.getElementById('wishlist-counter').innerText = wishlist.length;
+            applyFilters();
+            renderWishlistModal();
+        }
+
+        function toggleWishlistModal() {
+            const modal = document.getElementById('wishlist-modal');
+            const isOpen = !modal.classList.contains('opacity-0');
+            if (isOpen) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                renderWishlistModal();
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        function renderWishlistModal() {
+            const container = document.getElementById('wishlist-items-container');
+            if (wishlist.length === 0) {
+                container.innerHTML = `<p class="text-xs font-mono-atelier text-atelier-muted text-center py-6">No saved silhouettes.</p>`;
+                return;
+            }
+
+            const items = PRODUCTS.filter(p => wishlist.includes(p.id));
+            container.innerHTML = items.map(item => `
+                <div class="flex items-center justify-between p-3 bg-atelier-bg border border-atelier-border font-mono-atelier">
+                    <div class="flex items-center gap-3">
+                        <img src="${item.image}" class="w-12 h-14 object-cover">
+                        <div>
+                            <h4 class="font-serif-atelier text-base text-atelier-black">${item.name}</h4>
+                            <span class="text-xs text-atelier-black font-bold">৳${item.price.toLocaleString("en-BD")}</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('${item.id}'); toggleWishlist('${item.id}');" class="px-3 py-1 bg-atelier-black text-white text-[10px] uppercase">
+                        MOVE TO BAG
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // --- SEARCH OVERLAY ---
+        function toggleSearchOverlay() {
+            const overlay = document.getElementById('search-overlay');
+            const isOpen = !overlay.classList.contains('opacity-0');
+            if (isOpen) {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        // --- FIT CONCIERGE QUIZ ---
+        let selectedQuizFitType = 'clean';
+
+        function selectQuizFit(btn, fit) {
+            selectedQuizFitType = fit;
+            document.querySelectorAll('.quiz-fit-btn').forEach(b => {
+                b.classList.remove('bg-atelier-black', 'text-white');
+            });
+            btn.classList.add('bg-atelier-black', 'text-white');
+        }
+
+        function calculateFit() {
+            const waist = parseInt(document.getElementById('quiz-waist').value) || 30;
+            let recommended = 'WAIST 30 • EXTENDED INSEAM';
+            let desc = '';
+
+            if (waist <= 28) {
+                recommended = 'WAIST 28 • ARCHITECTURAL HIGH RISE';
+                desc = 'Precision tailored waist hugging geometry with floor break drape.';
+            } else if (waist > 28 && waist <= 30) {
+                recommended = 'WAIST 30 • REGULAR ATELIER CUT';
+                desc = 'Engineered zero-gap waist clearance with a sweeping puddle drop.';
+            } else if (waist > 30 && waist <= 32) {
+                recommended = 'WAIST 32 • EXTENDED SILHOUETTE';
+                desc = 'Spacious thigh clearance designed for luxury footwear pairing.';
+            } else {
+                recommended = 'WAIST 34+ • FULL OVERSIZED DROP';
+                desc = 'Maximum structural volume for high-fashion layering.';
+            }
+
+            document.getElementById('quiz-recommended-size').innerText = recommended;
+            document.getElementById('quiz-result-desc').innerText = desc;
+            document.getElementById('quiz-result').classList.remove('hidden');
+        }
+
+        // --- TOAST NOTIFICATION ---
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `bg-atelier-black text-white text-[11px] font-mono-atelier uppercase tracking-widest px-5 py-3.5 border border-atelier-gold shadow-2xl flex items-center gap-3 transform transition-all duration-300 pointer-events-auto`;
+            toast.innerHTML = `<span class="w-2 h-2 rounded-full bg-atelier-gold"></span> ${msg}`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            showToast('Private Atelier Membership Access Granted.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
