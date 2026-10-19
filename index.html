@@ -122,6 +122,24 @@
           #toast-container { left: 12px; right: 12px; bottom: 12px; }
         }
 
+
+        /* MOBILE HEADER FIX */
+        @media (max-width: 1023px) {
+          .glass-atelier { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(251,251,249,.97); }
+          header > div:first-child { position: relative; z-index: 2; }
+          #mobile-menu { top: 0 !important; padding-top: 120px !important; z-index: 1 !important; overflow-y: auto; }
+        }
+        @media (max-width: 640px) {
+          #announcement-bar { padding: 6px 10px; justify-content: center; }
+          #announcement-bar span { letter-spacing: .04em !important; font-size: 9.5px; line-height: 1.4; }
+          header > div:first-child { padding-left: 10px !important; padding-right: 10px !important; gap: 2px !important; }
+          header > div:first-child > a span:first-child { font-size: 22px; letter-spacing: .1em; }
+          header > div:first-child > a span:last-child { font-size: 7px; letter-spacing: .18em; }
+          header > div:first-child > div { gap: 0 !important; flex-shrink: 0; }
+          header > div:first-child > div > button { padding: 8px 6px; }
+          header > div:first-child > div > button:last-child { padding: 6px 10px !important; gap: 5px !important; font-size: 10px; letter-spacing: .05em; margin-left: 4px; }
+          #mobile-menu nav { font-size: 20px; letter-spacing: .06em; }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-atelier-black selection:text-white">
@@ -411,12 +429,13 @@
                     <!-- Size Filter -->
                     <div>
                         <label class="block text-[11px] font-mono-atelier uppercase text-atelier-black mb-3">Waist (Inches)</label>
-                        <div class="grid grid-cols-5 gap-1.5 text-center font-mono-atelier text-xs" id="size-filter-group">
+                        <div class="grid grid-cols-6 gap-1.5 text-center font-mono-atelier text-xs" id="size-filter-group">
                             <button onclick="toggleSizeFilter(this, '28')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">28</button>
                             <button onclick="toggleSizeFilter(this, '30')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">30</button>
                             <button onclick="toggleSizeFilter(this, '32')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">32</button>
                             <button onclick="toggleSizeFilter(this, '34')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">34</button>
                             <button onclick="toggleSizeFilter(this, '36')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">36</button>
+                            <button onclick="toggleSizeFilter(this, '38')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">38</button>
                         </div>
                     </div>
 
@@ -426,7 +445,7 @@
                             <span class="text-atelier-black uppercase">Max Price</span>
                             <span id="price-val" class="text-atelier-gold font-bold">৳2,500</span>
                         </div>
-                        <input type="range" id="price-range" min="1000" max="2500" step="100" value="2500" oninput="updatePriceLabel(this.value); applyFilters();" class="w-full accent-atelier-black bg-atelier-border h-1 appearance-none cursor-pointer">
+                        <input type="range" id="price-range" min="400" max="2500" step="50" value="2500" oninput="updatePriceLabel(this.value); applyFilters();" class="w-full accent-atelier-black bg-atelier-border h-1 appearance-none cursor-pointer">
                     </div>
                 </div>
             </aside>
@@ -708,6 +727,19 @@
     <script>
         // --- ARCHIVAL LUXURY PRODUCT DATA ---
         const PRODUCTS = [
+            {
+                id: '10',
+                name: 'High-Waisted Straight Leg Jeans',
+                category: 'High-Waist',
+                style: 'High-Waist',
+                price: 450,
+                weight: 'Stone-wash Denim',
+                badge: 'NEW',
+                sizes: ['36', '38'],
+                image: 'images/hwsl-main.jpg',
+                images: ['images/hwsl-full.jpg','images/hwsl-back.jpg','images/hwsl-pocket.jpg','images/hwsl-waist.jpg','images/hwsl-fabric.jpg','images/hwsl-backpocket.jpg'],
+                description: 'High-rise straight-leg jeans in a soft stone-wash blue. A clean, easy fit from the waist down to the hem.'
+            },
             {
                 id: '1',
                 name: 'Osaka 16oz Sculpted Wide-Leg',
