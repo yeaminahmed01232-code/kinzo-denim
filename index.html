@@ -423,13 +423,19 @@
                                 <input type="checkbox" value="High-Waist" class="filter-style accent-atelier-black" onchange="applyFilters()">
                                 <span>Tailored High-Waist</span>
                             </label>
+                            <label class="flex items-center gap-3 cursor-pointer hover:text-atelier-black">
+                                <input type="checkbox" value="Straight" class="filter-style accent-atelier-black" onchange="applyFilters()">
+                                <span>Straight</span>
+                            </label>
                         </div>
                     </div>
 
                     <!-- Size Filter -->
                     <div>
                         <label class="block text-[11px] font-mono-atelier uppercase text-atelier-black mb-3">Waist (Inches)</label>
-                        <div class="grid grid-cols-6 gap-1.5 text-center font-mono-atelier text-xs" id="size-filter-group">
+                        <div class="grid grid-cols-4 gap-1.5 text-center font-mono-atelier text-xs" id="size-filter-group">
+                            <button onclick="toggleSizeFilter(this, '24')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">24</button>
+                            <button onclick="toggleSizeFilter(this, '26')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">26</button>
                             <button onclick="toggleSizeFilter(this, '28')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">28</button>
                             <button onclick="toggleSizeFilter(this, '30')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">30</button>
                             <button onclick="toggleSizeFilter(this, '32')" class="size-btn border border-atelier-border py-2 text-atelier-black hover:border-atelier-black transition">32</button>
@@ -682,7 +688,8 @@
             </button>
 
             <div class="md:w-1/2 bg-gray-100 aspect-square relative">
-                <img id="modal-img" src="" alt="Product" class="w-full h-full object-cover">
+                <img id="modal-img" src="" alt="Product" class="w-full h-full object-contain bg-white">
+                <div id="modal-thumbs" class="absolute bottom-0 inset-x-0 flex gap-2 p-2 overflow-x-auto bg-white/80"></div>
             </div>
 
             <div class="md:w-1/2 p-8 overflow-y-auto flex flex-col justify-between space-y-6">
@@ -729,88 +736,81 @@
         const PRODUCTS = [
             {
                 id: '10',
-                name: 'High-Waisted Straight Leg Jeans',
+                name: "High-Waisted Straight Leg Jeans",
                 category: 'High-Waist',
                 style: 'High-Waist',
                 price: 450,
-                weight: 'Stone-wash Denim',
+                weight: "Stone-wash Denim",
                 badge: 'NEW',
-                sizes: ['36', '38'],
+                sizes: ["36", "38"],
                 image: 'images/hwsl-main.jpg',
-                images: ['images/hwsl-full.jpg','images/hwsl-back.jpg','images/hwsl-pocket.jpg','images/hwsl-waist.jpg','images/hwsl-fabric.jpg','images/hwsl-backpocket.jpg'],
-                description: 'High-rise straight-leg jeans in a soft stone-wash blue. A clean, easy fit from the waist down to the hem.'
+                images: ["images/hwsl-full.jpg", "images/hwsl-back.jpg", "images/hwsl-pocket.jpg", "images/hwsl-waist.jpg", "images/hwsl-fabric.jpg", "images/hwsl-backpocket.jpg"],
+                description: "High-rise straight-leg jeans in a soft stone-wash blue. A clean, easy fit from the waist down to the hem."
             },
             {
-                id: '1',
-                name: 'Osaka 16oz Sculpted Wide-Leg',
-                category: 'Wide-Leg',
-                style: 'Wide-Leg',
-                price: 1890,
-                weight: '16oz Osaka Selvedge',
-                badge: 'EDITORIAL DROP',
-                sizes: ['28', '30', '32', '34', '36'],
-                image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80',
-                description: 'Sculptural wide-leg raw denim woven on vintage Osaka shuttle looms. Deep indigo dye designed to reveal personal wear patterns.'
-            },
-            {
-                id: '2',
-                name: 'Archival Tactical Cargo Denim',
-                category: 'Cargo',
-                style: 'Cargo',
-                price: 2190,
-                weight: '15.5oz Ring-Spun Cotton',
-                badge: 'LIMITED RUN',
-                sizes: ['28', '30', '32', '34'],
-                image: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=80',
-                description: '3D spatial utility cargo compartments with concealed silver snaps and an exaggerated floor-sweeping break.'
-            },
-            {
-                id: '3',
-                name: 'High-Waist Tailored Raw Selvedge',
+                id: '11',
+                name: "High-Rise Sculpting Slim Flare Jeans",
                 category: 'High-Waist',
                 style: 'High-Waist',
-                price: 1790,
-                weight: '14.5oz Raw Indigo',
-                badge: 'ATELIER CLASSIC',
-                sizes: ['28', '30', '32', '34', '36'],
-                image: 'https://images.unsplash.com/photo-1582552938357-32b906df40cb?auto=format&fit=crop&w=800&q=80',
-                description: 'High-rise waist tailoring engineered with a continuous unbroken leg press crease for formal streetwear styling.'
+                price: 450,
+                weight: "Slim Flare Denim",
+                badge: 'NEW',
+                sizes: ["24", "26", "34"],
+                image: 'images/j2-main.jpg',
+                images: ["images/j2-full.jpg", "images/j2-t1.jpg", "images/j2-t2.jpg", "images/j2-t3.jpg", "images/j2-t4.jpg"],
+                description: "High-rise slim jeans that flare out from the knee. Mid-blue wash with copper-tone rivets and a shaped fit through the waist."
             },
             {
-                id: '4',
-                name: 'Vintage Distressed Oversized Baggy',
-                category: 'Baggy',
-                style: 'Baggy',
-                price: 1590,
-                weight: '15.0oz Hand-Treated',
-                badge: 'HAND CRAFTED',
-                sizes: ['30', '32', '34', '36'],
-                image: 'https://images.unsplash.com/photo-1542272604-780c36856d66?auto=format&fit=crop&w=800&q=80',
-                description: 'Hand-abraded knee wear patterns with stone-wash tinting and raw frayed hem lines.'
-            },
-            {
-                id: '5',
-                name: 'Pitch Black Architectural Flare',
+                id: '12',
+                name: "Wide-Leg Denim Trousers",
                 category: 'Wide-Leg',
                 style: 'Wide-Leg',
-                price: 1990,
-                weight: '16oz Sulfur Black',
-                badge: 'RESTOCKED',
-                sizes: ['28', '30', '32', '34'],
-                image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80',
-                description: 'Sulfur-dyed deep obsidian black denim with extended rise and reinforced brass hardware.'
+                price: 450,
+                weight: "Indigo Wide-Leg Denim",
+                badge: 'NEW',
+                sizes: ["28"],
+                image: 'images/j3-main.jpg',
+                images: ["images/j3-full.jpg", "images/j3-t1.jpg", "images/j3-t2.jpg", "images/j3-t3.jpg", "images/j3-t4.jpg"],
+                description: "High-waisted wide-leg jeans in a deep indigo blue, with clean stitching and a wide stitched hem."
             },
             {
-                id: '6',
-                name: 'Dirty Tinted Vintage Wide-Leg',
-                category: 'Baggy',
-                style: 'Baggy',
-                price: 1850,
-                weight: '15.5oz Tinted Selvedge',
-                badge: 'ARCHIVAL RARE',
-                sizes: ['28', '30', '32', '34', '36'],
-                image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80',
-                description: '90s archival dirty-wash tinting with exaggerated hem puddling for effortless luxury layering.'
+                id: '13',
+                name: "Wide-Leg Patch Pocket Jeans",
+                category: 'Wide-Leg',
+                style: 'Wide-Leg',
+                price: 450,
+                weight: "Patch Pocket Denim",
+                badge: 'NEW',
+                sizes: ["28", "30", "32", "34"],
+                image: 'images/j4-main.jpg',
+                images: ["images/j4-full.jpg", "images/j4-t1.jpg", "images/j4-t2.jpg", "images/j4-t3.jpg", "images/j4-t4.jpg"],
+                description: "Relaxed wide-leg jeans with pleated front patch pockets and button tabs, in a cropped length."
+            },
+            {
+                id: '14',
+                name: "Regular Fit Straight Jeans",
+                category: 'Straight',
+                style: 'Straight',
+                price: 450,
+                weight: "Regular Fit Denim",
+                badge: 'NEW',
+                sizes: ["24", "34", "36", "38"],
+                image: 'images/j5-main.jpg',
+                images: ["images/j5-full.jpg", "images/j5-t1.jpg", "images/j5-t2.jpg", "images/j5-t3.jpg", "images/j5-t4.jpg"],
+                description: "Everyday straight jeans in a medium-dark blue wash. Easy through the hip and straight down the leg."
+            },
+            {
+                id: '15',
+                name: "Dark Wash High-Waisted Wide-Leg Jeans",
+                category: 'Wide-Leg',
+                style: 'Wide-Leg',
+                price: 450,
+                weight: "Dark Wash Denim",
+                badge: 'NEW',
+                sizes: ["28", "34"],
+                image: 'images/j6-main.jpg',
+                images: ["images/j6-full.jpg", "images/j6-t1.jpg", "images/j6-t2.jpg", "images/j6-t3.jpg", "images/j6-t4.jpg"],
+                description: "High-waisted wide-leg jeans in a deep dark-wash blue, with a roomy leg that falls straight to the hem."
             }
         ];
 
@@ -1084,6 +1084,8 @@
             if (!product) return;
 
             document.getElementById('modal-img').src = product.image;
+            const thumbs = document.getElementById('modal-thumbs');
+            thumbs.innerHTML = [product.image, ...(product.images || [])].map(u => `<img src="${u}" onclick="document.getElementById('modal-img').src='${u}'" class="h-14 w-11 object-cover cursor-pointer border border-atelier-border bg-white shrink-0">`).join('');
             document.getElementById('modal-title').innerText = product.name;
             document.getElementById('modal-price').innerText = `৳${product.price.toLocaleString("en-BD")}`;
             document.getElementById('modal-badge').innerText = product.badge;
